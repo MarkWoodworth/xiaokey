@@ -7,8 +7,8 @@
 #                 +---USB C--+  
 #  paddle dit in  D0        5V
 #  paddle dah in  D1       GND
-#         key out D2       3v3
-#      buzzer out D3       D10 in  button 1
+#      buzzer pwm D2       3v3
+#         key out D3       D10 in  button 1
 #     i2c sda     D4        D9 in  button 2 
 #     i2c scl     D5        D8 in  button 3
 #          tx     D6        D7     rx
@@ -51,13 +51,13 @@ blue.direction = Direction.OUTPUT
 blue.value = True
 
 # setup buzzer
-buzzer = pwmio.PWMOut(board.D3,variable_frequency=True)
+buzzer = pwmio.PWMOut(board.D2,variable_frequency=True)
 buzzer.frequency = SIDEFREQ
 OFF = 0
 ON = 2**15
 
 # setup keyer output
-key = DigitalInOut(board.D2) ;
+key = DigitalInOut(board.D3) ;
 key.direction = Direction.OUTPUT
 
 # setup paddle inputs
@@ -199,9 +199,9 @@ def serials():
             play(encode(letter))
             
 def send(c):
-#    print(c,end='')
+#   print(c,end='')
     if serial.connected:
-        serial.write(str.encode(c))
+       serial.write(str.encode(c))
     if KEYBOARD:
         keyboard_layout.write(c)
     
@@ -235,7 +235,7 @@ class Iambic:
         self.latch_paddles()
         if self.state == self.SPACE:
             if self.dit:
-                self.dit= False
+                self.dit = False
                 self.dah = False
                 self.char += "."
                 self.state = self.DIT
