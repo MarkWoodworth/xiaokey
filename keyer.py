@@ -106,34 +106,34 @@ def decode(char):
     else:
         return '('+char+'?)'
 
-def map(pattern,letter):
+def MAP(pattern,letter):
     decodings[pattern] = letter
     encodings[letter ] = pattern
     
-map('.-'   ,'a') ; map('-...' ,'b') ; map('-.-.' ,'c') ; map('-..'  ,'d') ; map('.'    ,'e')
-map('..-.' ,'f') ; map('--.'  ,'g') ; map('....' ,'h') ; map('..'   ,'i') ; map('.---' ,'j')
-map('-.-'  ,'k') ; map('.-..' ,'l') ; map('--'   ,'m') ; map('-.'   ,'n') ; map('---'  ,'o')
-map('.--.' ,'p') ; map('--.-' ,'q') ; map('.-.'  ,'r') ; map('...'  ,'s') ; map('-'    ,'t')
-map('..-'  ,'u') ; map('...-' ,'v') ; map('.--'  ,'w') ; map('-..-' ,'x') ; map('-.--' ,'y')
-map('--..' ,'z')
+MAP('.-'   ,'a') ; MAP('-...' ,'b') ; MAP('-.-.' ,'c') ; MAP('-..'  ,'d') ; MAP('.'    ,'e')
+MAP('..-.' ,'f') ; MAP('--.'  ,'g') ; MAP('....' ,'h') ; MAP('..'   ,'i') ; MAP('.---' ,'j')
+MAP('-.-'  ,'k') ; MAP('.-..' ,'l') ; MAP('--'   ,'m') ; MAP('-.'   ,'n') ; MAP('---'  ,'o')
+MAP('.--.' ,'p') ; MAP('--.-' ,'q') ; MAP('.-.'  ,'r') ; MAP('...'  ,'s') ; MAP('-'    ,'t')
+MAP('..-'  ,'u') ; MAP('...-' ,'v') ; MAP('.--'  ,'w') ; MAP('-..-' ,'x') ; MAP('-.--' ,'y')
+MAP('--..' ,'z')
               
-map('.----','1') ; map('..---','2') ; map('...--','3') ; map('....-','4') ; map('.....','5')
-map('-....','6') ; map('--...','7') ; map('---..','8') ; map('----.','9') ; map('-----','0')
+MAP('.----','1') ; MAP('..---','2') ; MAP('...--','3') ; MAP('....-','4') ; MAP('.....','5')
+MAP('-....','6') ; MAP('--...','7') ; MAP('---..','8') ; MAP('----.','9') ; MAP('-----','0')
 
-map('.-.-.-','.') # period
-map('--..--',',') # comma
-map('..--..','?') # question mark
-map('-...-', '=') # equals, also /BT separator
-map('-....-','-') # hyphen
-map('-..-.', '/') # forward slash
-map('.--.-.','@') # at sign
+MAP('.-.-.-','.') # period
+MAP('--..--',',') # comma
+MAP('..--..','?') # question mark
+MAP('-...-', '=') # equals, also /BT separator
+MAP('-....-','-') # hyphen
+MAP('-..-.', '/') # forward slash
+MAP('.--.-.','@') # at sign
 
-map('-.--.', '(') # /KN over to named station
-map('.-.-.', '+') # /AR stop (end of message)
-map('.-...', '&') # /AS wait
-map('...-.-','|') # /SK end of contact
-map('...-.', '*') # /SN understood
-map('.......','#') # error
+MAP('-.--.', '(') # /KN over to named station
+MAP('.-.-.', '+') # /AR stop (end of message)
+MAP('.-...', '&') # /AS wait
+MAP('...-.-','|') # /SK end of contact
+MAP('...-.', '*') # /SN understood
+MAP('.......','#') # error
 
 # key down and up
 def cw(on):
