@@ -106,34 +106,34 @@ def decode(char):
     else:
         return '('+char+'?)'
 
-def morse(pattern,letter):
+def map(pattern,letter):
     decodings[pattern] = letter
     encodings[letter ] = pattern
     
-morse('.-'   ,'a') ; morse('-...' ,'b') ; morse('-.-.' ,'c') ; morse('-..'  ,'d') ; morse('.'    ,'e')
-morse('..-.' ,'f') ; morse('--.'  ,'g') ; morse('....' ,'h') ; morse('..'   ,'i') ; morse('.---' ,'j')
-morse('-.-'  ,'k') ; morse('.-..' ,'l') ; morse('--'   ,'m') ; morse('-.'   ,'n') ; morse('---'  ,'o')
-morse('.--.' ,'p') ; morse('--.-' ,'q') ; morse('.-.'  ,'r') ; morse('...'  ,'s') ; morse('-'    ,'t')
-morse('..-'  ,'u') ; morse('...-' ,'v') ; morse('.--'  ,'w') ; morse('-..-' ,'x') ; morse('-.--' ,'y')
-morse('--..' ,'z')
+map('.-'   ,'a') ; map('-...' ,'b') ; map('-.-.' ,'c') ; map('-..'  ,'d') ; map('.'    ,'e')
+map('..-.' ,'f') ; map('--.'  ,'g') ; map('....' ,'h') ; map('..'   ,'i') ; map('.---' ,'j')
+map('-.-'  ,'k') ; map('.-..' ,'l') ; map('--'   ,'m') ; map('-.'   ,'n') ; map('---'  ,'o')
+map('.--.' ,'p') ; map('--.-' ,'q') ; map('.-.'  ,'r') ; map('...'  ,'s') ; map('-'    ,'t')
+map('..-'  ,'u') ; map('...-' ,'v') ; map('.--'  ,'w') ; map('-..-' ,'x') ; map('-.--' ,'y')
+map('--..' ,'z')
               
-morse('.----','1') ; morse('..---','2') ; morse('...--','3') ; morse('....-','4') ; morse('.....','5')
-morse('-....','6') ; morse('--...','7') ; morse('---..','8') ; morse('----.','9') ; morse('-----','0')
+map('.----','1') ; map('..---','2') ; map('...--','3') ; map('....-','4') ; map('.....','5')
+map('-....','6') ; map('--...','7') ; map('---..','8') ; map('----.','9') ; map('-----','0')
 
-morse('.-.-.-','.') # period
-morse('--..--',',') # comma
-morse('..--..','?') # question mark
-morse('-...-', '=') # equals, also /BT separator
-morse('-....-','-') # hyphen
-morse('-..-.', '/') # forward slash
-morse('.--.-.','@') # at sign
+map('.-.-.-','.') # period
+map('--..--',',') # comma
+map('..--..','?') # question mark
+map('-...-', '=') # equals, also /BT separator
+map('-....-','-') # hyphen
+map('-..-.', '/') # forward slash
+map('.--.-.','@') # at sign
 
-morse('-.--.', '(') # /KN over to named station
-morse('.-.-.', '+') # /AR stop (end of message)
-morse('.-...', '&') # /AS wait
-morse('...-.-','|') # /SK end of contact
-morse('...-.', '*') # /SN understood
-morse('.......','#') # error
+map('-.--.', '(') # /KN over to named station
+map('.-.-.', '+') # /AR stop (end of message)
+map('.-...', '&') # /AS wait
+map('...-.-','|') # /SK end of contact
+map('...-.', '*') # /SN understood
+map('.......','#') # error
 
 # key down and up
 def cw(on):
