@@ -110,45 +110,30 @@ def morse(pattern,letter):
     decodings[pattern] = letter
     encodings[letter ] = pattern
     
-morse('.-'   ,'a')
-morse('-...' ,'b')
-morse('-.-.' ,'c')
-morse('-..'  ,'d')
-morse('.'    ,'e')
-morse('..-.' ,'f')
-morse('--.'  ,'g')
-morse('....' ,'h')
-morse('..'   ,'i')
-morse('.---' ,'j')
-morse('-.-'  ,'k')
-morse('.-..' ,'l')
-morse('--'   ,'m')
-morse('-.'   ,'n')
-morse('---'  ,'o')
-morse('.--.' ,'p')
-morse('--.-' ,'q')
-morse('.-.'  ,'r')
-morse('...'  ,'s')
-morse('-'    ,'t')
-morse('..-'  ,'u')
-morse('...-' ,'v')
-morse('.--'  ,'w')
-morse('-..-' ,'x')
-morse('-.--' ,'y')
+morse('.-'   ,'a') ; morse('-...' ,'b') ; morse('-.-.' ,'c') ; morse('-..'  ,'d') ; morse('.'    ,'e')
+morse('..-.' ,'f') ; morse('--.'  ,'g') ; morse('....' ,'h') ; morse('..'   ,'i') ; morse('.---' ,'j')
+morse('-.-'  ,'k') ; morse('.-..' ,'l') ; morse('--'   ,'m') ; morse('-.'   ,'n') ; morse('---'  ,'o')
+morse('.--.' ,'p') ; morse('--.-' ,'q') ; morse('.-.'  ,'r') ; morse('...'  ,'s') ; morse('-'    ,'t')
+morse('..-'  ,'u') ; morse('...-' ,'v') ; morse('.--'  ,'w') ; morse('-..-' ,'x') ; morse('-.--' ,'y')
 morse('--..' ,'z')
               
-morse('.----','1')
-morse('..---','2')
-morse('...--','3')
-morse('....-','4')
-morse('.....','5')
-morse('-....','6')
-morse('--...','7')
-morse('---..','8')
-morse('----.','9')
-morse('-----','0')
+morse('.----','1') ; morse('..---','2') ; morse('...--','3') ; morse('....-','4') ; morse('.....','5')
+morse('-....','6') ; morse('--...','7') ; morse('---..','8') ; morse('----.','9') ; morse('-----','0')
 
-morse('...---...','!')
+morse('.-.-.-','.') # period
+morse('--..--',',') # comma
+morse('..--..','?') # question mark
+morse('-...-', '=') # equals, also /BT separator
+morse('-....-','-') # hyphen
+morse('-..-.', '/') # forward slash
+morse('.--.-.','@') # at sign
+
+morse('-.--.', '(') # /KN over to named station
+morse('.-.-.', '+') # /AR stop (end of message)
+morse('.-...', '&') # /AS wait
+morse('...-.-','|') # /SK end of contact
+morse('...-.', '*') # /SN understood
+morse('.......','#') # error
 
 # key down and up
 def cw(on):
@@ -223,16 +208,10 @@ class Iambic:
     def __init__(self,dit_key,dah_key):
         self.dit_key = dit_key
         self.dah_key = dah_key
-        self.dit = False
-        self.dah = False
-        self.SPACE    = 0
-        self.DIT      = 1
-        self.DIT_WAIT = 2
-        self.DAH      = 3
-        self.DAH_WAIT = 4
+        self.dit = False ; self.dah = False
+        self.SPACE=0 ; self.DIT=1 ; self.DIT_WAIT=2 ; self.DAH=3 ; self.DAH_WAIT=4
         self.state = self.SPACE
-        self.in_char = False
-        self.in_word = False
+        self.in_char = False ; self.in_word = False
         self.start = 0
         self.char = ''
     def hack(self):
@@ -248,18 +227,14 @@ class Iambic:
         if not self.dah_key.value:
             self.dah = True
     def start_dit(self):
-        self.dit = False
-        self.dah = False
-        self.in_char = True
-        self.in_word = True
+        self.dit = False    ; self.dah = False
+        self.in_char = True ; self.in_word = True
         self.char += "."
         cw(True)
         self.set_state(self.DIT)
     def start_dah(self):
-        self.dit = False
-        self.dah = False
-        self.in_char = True
-        self.in_word = True
+        self.dit = False    ; self.dah = False
+        self.in_char = True ; self.in_word = True
         self.char += "-"
         cw(True)
         self.set_state(self.DAH)        
@@ -314,6 +289,4 @@ green.value = False
 while True:
     buttons()
     serials()
-    iambic.cycle()
-
-            
+    iambic.cycle()          
