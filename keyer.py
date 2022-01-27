@@ -1,8 +1,37 @@
-# keyer.py
+# xiaoKey - a computer connected iambic keyer
 #
-# (C) Copyright 2022 Mark Woodworth AC9YW All Rights Reserved
+# Copyright 2022 Mark Woodworth (AC9YW)
 #
-#               seed xiao rp2040
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+
+# user configuration
+WPM = 15
+SIDETONE = True
+SIDEFREQ = 880
+KEYBOARD = False
+
+# user messages
+MSG1 = "AC9YW"
+MSG2 = "CQ CQ CQ DE AC9YW AC9YW AC9YW K"
+MSG3 = "73"
+
+#               seeed xiao rp2040
 #
 #                 +---USB C--+  
 #  paddle dit in  D0        5V
@@ -26,18 +55,6 @@ from adafruit_hid.keyboard import Keyboard
 from adafruit_hid.keyboard_layout_us import KeyboardLayoutUS
 from adafruit_hid.keycode import Keycode
 
-# configuration
-WPM = 15
-SIDETONE = True
-SIDEFREQ = 880
-KEYBOARD = False
-
-# messages
-MSG1 = "AC9YW"
-MSG2 = "CQ CQ CQ DE AC9YW AC9YW AC9YW K"
-MSG3 = "73"
-
-
 # setup leds (false = on)
 pixel = neopixel.NeoPixel(board.NEOPIXEL,1)
 red   = DigitalInOut(board.LED_RED)
@@ -49,6 +66,12 @@ green.value = True
 blue  = DigitalInOut(board.LED_BLUE)
 blue.direction = Direction.OUTPUT
 blue.value = True
+def led(color):
+    global red,green,blue
+    red.value = True ; green.value = True ; blue.value = True
+    if color=='red':  red.value   = False
+    if color=='green':green.value = False
+    if color=='blue': blue.value  = False
 
 # setup buzzer (set duty cycle to ON to sound)
 buzzer = pwmio.PWMOut(board.D2,variable_frequency=True)
@@ -180,10 +203,12 @@ def play(pattern):
 
 # send and play message
 def xmit(message):
+    led('red')
     for letter in message:
         send(letter)
         play(encode(letter))
     play(' ')
+    led('')
     
 # send and play memories on button presses
 def buttons():
@@ -199,9 +224,11 @@ def buttons():
 def serials():
     if serial.connected:
         if serial.in_waiting > 0:
+            led('blue') 
             letter = serial.read().decode('utf-8')
             send(letter)
             play(encode(letter))
+            led('')
 
 # decode iambic b paddles
 class Iambic:
@@ -232,12 +259,14 @@ class Iambic:
         self.char += "."
         cw(True)
         self.set_state(self.DIT)
+        led('green')
     def start_dah(self):
         self.dit = False    ; self.dah = False
         self.in_char = True ; self.in_word = True
         self.char += "-"
         cw(True)
-        self.set_state(self.DAH)        
+        self.set_state(self.DAH)
+        led('green')
     def cycle(self):
         self.latch_paddles()
         if self.state == self.SPACE:
@@ -251,7 +280,8 @@ class Iambic:
                 self.char = ""
             elif self.in_word and self.elapsed()>6*dit_time():
                 self.in_word = False
-                send(" ") 
+                send(" ")
+                led('')
         elif self.state == self.DIT:
             if self.elapsed() > dit_time():
                 cw(False)
@@ -281,9 +311,6 @@ class Iambic:
 
 # paddle instance
 iambic = Iambic(dit_key,dah_key)
-
-# turn on green run light
-green.value = False
 
 # run
 while True:
