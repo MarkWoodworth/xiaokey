@@ -40,7 +40,7 @@ The `pcb`directory has the Eagle schematics for a possible carrier board with co
 
    The most recent versions of these files can be found [here](https://circuitpython.org/libraries).
 
-6. Press the *REBOOT* button on the Xiao.
+6. Press the *RESET* button on the Xiao.
 
 ## Configuration
 
