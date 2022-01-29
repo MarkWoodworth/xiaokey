@@ -77,13 +77,24 @@ MSG3 = "73"
 
 ![schematic](./img/xiaokey.png)
 
+## Bill of Materials
+
+:construction: 
+
 ## Assembly
 
 :construction: This part is waiting for the 1.5 inch square boards to appear from the wonderful [OSH Park](https://oshpark.com/).
 
-<img src="./img/top.png" alt="center" style="zoom:20%;" />
+![top](./img/top.png)
 
 
+
+## Future
+
+Some Ideas:
+
+* The I2C pins are available to expand to other parts, including a display or other inputs
+* The Rx an Tx pins are available to expand to a (3.3V level) serial port
 
 ## References
 
