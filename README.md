@@ -4,7 +4,7 @@ Even yet another electronic iambic keyer.
 
 It is a minimalist device based on:
 
-* a Seeed [Xiao](https://www.seeedstudio.com/XIAO-RP2040-v1-0-p-5026.html) RP2040 controller board
+* an inexpensive Seeed [Xiao](https://www.seeedstudio.com/XIAO-RP2040-v1-0-p-5026.html) RP2040 controller board
 * [CircuitPython](https://circuitpython.org/) programs and libraries
 
 The `code` directory has the files to be installed on the Seeed Xiao device.
@@ -23,6 +23,25 @@ The `pcb`directory has the Eagle schematics for a possible carrier board with co
 * Speed, sidetone, keyboard operation, and canned messages are configured by editing the code.py file on the CIRCUITPY: device
 * Can act as a USB keyboard, where keyed characters are also sent to the PC a keystrokes.  
 
+## Software Installation
+
+1. Get the most recent UF2 file for *CircuitPython* on the *Xiao RP2040* [here](https://circuitpython.org/board/seeeduino_xiao_rp2040/).
+
+2. Connect the *Xiao* to a computer using a USB C cable.
+
+3. Follow the instructions for loading *CircuitPython* [here](https://wiki.seeedstudio.com/XIAO-RP2040-with-CircuitPython/).  Basically, you put the *Xiao* in boot loader mode by long-pressing the _BOOT_ button and then copy the UF2 file to the *Xiao* which appears as `RP1-RP2`. The *Xiao* will now reboot itself.
+
+4. Copy `boot.py` and `code.py` to the Xiao, which now appears as drive `CIRCUITPY` on the computer.
+
+5. Copy the required library files (in the repository `lib` directory) to the `lib` directory on the attached *Xiao*.  The files are:
+
+   * `neopixel.mpy`
+   * The directory `adafruit_hid`
+
+   The most recent versions of these files can be found [here](https://circuitpython.org/libraries).
+
+6. Press the *REBOOT* button on the Xiao.
+
 ## Pinout
 
 ```
@@ -37,7 +56,9 @@ The `pcb`directory has the Eagle schematics for a possible carrier board with co
                  +----------+
 ```
 
+## Schematic
 
+![schematic](.\img\xiaokey.png)
 
 ## References
 
