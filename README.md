@@ -1,27 +1,27 @@
 # xiaoKey
 
-Even yet another electronic iambic keyer.
+Even yet another electronic iambic keyer. 
 
 It is a minimalist device based on:
 
 * an inexpensive Seeed [Xiao](https://www.seeedstudio.com/XIAO-RP2040-v1-0-p-5026.html) RP2040 controller board
 * [CircuitPython](https://circuitpython.org/) programs and libraries
 
-The `code` directory has the files to be installed on the Seeed Xiao device.
+The `code` directory has the files to be installed on the *Seeed Xiao* device.
 
 The `pcb`directory has the Eagle schematics for a possible carrier board with connectors.
 
 ## Features
 
-* Operates as an iambic type B Morse code keyer with a 3.5mm stereo jack
+* Operates as an [iambic type B](http://wb9kzy.com/modeab.pdf) Morse code keyer with a 3.5mm stereo jack to connect to a dual-paddle telegraph key
 * Has a configurable side tone transmitted through an on-board piezo buzzer
-* Has an open-collector output to a 2.5mm mono jack
+* Has an open-collector output to a 2.5mm mono jack, which should be able to key most radios
 * When connected to a PC over USB appears as two COM ports:
-  * One is the CircuitPython REPL and console
+  * One is the *CircuitPython* REPL and console
   * A second port that shows the characters being transmitted, and also transmits Morse code for characters typed into the COM port
 * Has three buttons to trigger canned messages
-* Speed, sidetone, keyboard operation, and canned messages are configured by editing the code.py file on the CIRCUITPY: device
-* Can act as a USB keyboard, where keyed characters are also sent to the PC a keystrokes.  
+* Speed, sidetone, keyboard operation, and canned messages are configured by editing the code.py file on the *CIRCUITPY:* device
+* Can act as a USB keyboard, where keyed characters are also sent to the computer as keystrokes.  
 
 ## Software Installation
 
@@ -76,6 +76,14 @@ MSG3 = "73"
 ## Schematic
 
 ![schematic](./img/xiaokey.png)
+
+## Assembly
+
+:construction: This part is waiting for the 1.5 inch square boards to appear from the wonderful [OSH Park](https://oshpark.com/).
+
+<img src="./img/top.png" alt="center" style="zoom:20%;" />
+
+
 
 ## References
 
