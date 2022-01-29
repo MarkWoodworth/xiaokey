@@ -58,7 +58,7 @@ The `pcb`directory has the Eagle schematics for a possible carrier board with co
 
 ## Schematic
 
-![schematic](.\img\xiaokey.png)
+![schematic](./img/xiaokey.png)
 
 ## References
 
