@@ -84,10 +84,10 @@ key = DigitalInOut(board.D3) ;
 key.direction = Direction.OUTPUT
 
 # setup paddle inputs
-dit_key = DigitalInOut(board.D1)
+dit_key = DigitalInOut(board.D0)
 dit_key.direction = Direction.INPUT
 dit_key.pull = Pull.UP
-dah_key = DigitalInOut(board.D0)
+dah_key = DigitalInOut(board.D1)
 dah_key.direction = Direction.INPUT
 dah_key.pull = Pull.UP
 
@@ -122,12 +122,12 @@ def encode(char):
         return ''
 
 decodings = {}
-def decode(char):
+def decode(pattern):
     global decodings
-    if char in decodings:
-        return decodings[char]
+    if pattern in decodings:
+        return decodings[pattern]
     else:
-        return '('+char+'?)'
+        return '('+pattern+'?)'
 
 def MAP(pattern,letter):
     decodings[pattern] = letter
