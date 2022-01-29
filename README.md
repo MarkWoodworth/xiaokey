@@ -42,6 +42,23 @@ The `pcb`directory has the Eagle schematics for a possible carrier board with co
 
 6. Press the *REBOOT* button on the Xiao.
 
+## Configuration
+
+The device is configured by editing the source file `code.py` on the *Xiao* device.  The configuration parameters appear near the top.
+
+```python
+# user configuration
+WPM = 15
+SIDETONE = True
+SIDEFREQ = 880
+KEYBOARD = False
+
+# user messages
+MSG1 = "AC9YW"
+MSG2 = "CQ CQ CQ DE AC9YW AC9YW AC9YW K"
+MSG3 = "73"
+```
+
 ## Pinout
 
 ```
@@ -64,5 +81,5 @@ The `pcb`directory has the Eagle schematics for a possible carrier board with co
 
 The iambic keyer state machine owes a great debt to the [1keyer](https://hackaday.io/project/18841-1keyer/log/50103-state-machine-of-the-union) project by Mark VandeWettering, and the [PIK](https://owenduffy.net/module/pik/pik.htm) project by Owen Duffy.
 
-Larry (WB7C) has very helpful resources at [Morse Code for the Radio Amateur](https://www.morsecodeclassnet.com/)
+Larry Kuck (WB7C) has very helpful resources at [Morse Code for the Radio Amateur](https://www.morsecodeclassnet.com/)
 
