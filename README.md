@@ -17,9 +17,10 @@ The `pcb`directory has the Eagle schematics for a possible carrier board with co
 * Has a configurable side tone transmitted through an on-board piezo buzzer
 * Has an open-collector output to a 2.5mm mono jack
 * When connected to a PC over USB appears as two COM ports:
-  * One for code installation and configuration
+  * One is the CircuitPython REPL and console
   * A second port that shows the characters being transmitted, and also transmits Morse code for characters typed into the COM port
 * Has three buttons to trigger canned messages
+* Speed, sidetone, keyboard operation, and canned messages are configured by editing the code.py file on the CIRCUITPY: device
 * Can act as a USB keyboard, where keyed characters are also sent to the PC a keystrokes.  
 
 ## Pinout
