@@ -94,7 +94,7 @@ MSG3 = "73"
 Some Ideas:
 
 * The I2C pins are available to expand to other parts, including a display or other inputs
-* The Rx an Tx pins are available to expand to a (3.3V level) serial port
+* The Rx and Tx pins are available to expand to a (3.3V level) serial port
 
 ## References
 
