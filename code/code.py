@@ -21,7 +21,7 @@
 # SOFTWARE.
 
 # user configuration
-WPM = 15
+WPM = 20
 SIDETONE = True
 SIDEFREQ = 880
 KEYBOARD = False
@@ -122,12 +122,12 @@ def encode(char):
         return ''
 
 decodings = {}
-def decode(pattern):
+def decode(char):
     global decodings
-    if pattern in decodings:
-        return decodings[pattern]
+    if char in decodings:
+        return decodings[char]
     else:
-        return '('+pattern+'?)'
+        return '('+char+'?)'
 
 def MAP(pattern,letter):
     decodings[pattern] = letter
