@@ -2,6 +2,8 @@
 
 Even yet another electronic iambic keyer. 
 
+![schematic](./img/assembly.png)
+
 It is a minimalist device based on:
 
 * an inexpensive Seeed [Xiao](https://www.seeedstudio.com/XIAO-RP2040-v1-0-p-5026.html) RP2040 controller board
@@ -79,11 +81,11 @@ MSG3 = "73"
 
 ## Bill of Materials
 
-:construction: 
+:construction:  _coming soon_
 
 ## Assembly
 
-:construction: This part is waiting for the 1.5 inch square boards to appear from the wonderful [OSH Park](https://oshpark.com/).
+:construction: _coming soon_
 
 ![top](./img/top.png)
 
