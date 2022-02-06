@@ -140,14 +140,3 @@ Some Ideas:
 The iambic keyer state machine owes a great debt to the [1keyer](https://hackaday.io/project/18841-1keyer/log/50103-state-machine-of-the-union) project by Mark VandeWettering, and the [PIK](https://owenduffy.net/module/pik/pik.htm) project by Owen Duffy.
 
 Larry Kuck (WB7C) has very helpful resources at [Morse Code for the Radio Amateur](https://www.morsecodeclassnet.com/)
-
-
-
-```mermaid
-graph LR;
-  A --> B ;
-  
-```
-
-
-
